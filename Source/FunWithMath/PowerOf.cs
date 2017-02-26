@@ -6,6 +6,7 @@ namespace FunWithMath
     public class PowerOf
     {
         public int CalcPowerOf(int @base, int exponent) {
+            if (@base == 0) { return 0; }
             if (exponent == 0) { return 1; }
             return @base * CalcPowerOf(@base, exponent - 1);
         }
@@ -17,6 +18,8 @@ namespace FunWithMath
         }
 
         public static IEnumerable<object[]> PowerOfTestData() {
+            yield return new object[] { 0, 0, 0 };
+            yield return new object[] { 0, 1, 0 };
             yield return new object[] { 2, 0, 1 };
             yield return new object[] { 2, 1, 2 };
             yield return new object[] { 2, 2, 4 };
