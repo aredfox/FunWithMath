@@ -68,6 +68,7 @@ namespace FunWithMath
         [InlineData("A man, a plan, a canal - Panama!")]
         [InlineData("Madam, I'm Adam")]
         [InlineData("Never odd or even")]
+        [InlineData("16461")]
         public void ReturnsTrueWhenPalindrome(string candidate)
         {
             Assert.True(IsPalindrome(candidate));
