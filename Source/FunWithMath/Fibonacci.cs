@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace FunWithMath
@@ -11,10 +12,26 @@ namespace FunWithMath
             return CalcFibonacci(position - 1) + CalcFibonacci(position - 2);
         }
 
+        public int CalcFibonacciNonRecursive(int position) {
+            var result = new List<int> { 0, 1 };
+
+            for (var i = 2; i <= position; i++)
+                result.Add(result.ElementAt(i - 1) + result.ElementAt(i - 2));
+
+            return result.ElementAt(position);                
+        }
+
         [Theory]
         [MemberData(nameof(FibonacciTestData))]
-        public void PowerOfTest(int position, int expected) {
+        public void CalcFibonacciTest(int position, int expected) {
             Assert.Equal(expected, CalcFibonacci(position));
+        }
+
+        [Theory]
+        [MemberData(nameof(FibonacciTestData))]
+        public void CalcFibonacciNonRecursiveTest(int position, int expected)
+        {
+            Assert.Equal(expected, CalcFibonacciNonRecursive(position));
         }
 
         public static IEnumerable<object[]> FibonacciTestData() {

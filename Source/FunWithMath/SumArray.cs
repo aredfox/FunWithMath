@@ -13,7 +13,7 @@ namespace FunWithMath
 
         [Theory]
         [MemberData(nameof(SumArrayTestData))]
-        public void PowerOfTest(int[] array, int expected) {
+        public void CalcSumArrayTest(int[] array, int expected) {
             Assert.Equal(expected, CalcSumArray(array));
         }
 

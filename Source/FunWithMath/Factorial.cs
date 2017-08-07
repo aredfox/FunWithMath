@@ -10,10 +10,27 @@ namespace FunWithMath
             return number * CalcFactorial(number - 1);
         }
 
+        public int CalcFactorialNonRecursive(int number)
+        {
+            var result = 1;
+
+            for (int i = result; i <= number; i++)
+                result *= i;
+
+            return result;
+        }
+
         [Theory]
         [MemberData(nameof(FactorialTestData))]
-        public void PowerOfTest(int position, int expected) {
+        public void CalcFactorialTest(int position, int expected) {
             Assert.Equal(expected, CalcFactorial(position));
+        }
+
+        [Theory]
+        [MemberData(nameof(FactorialTestData))]
+        public void CalcFactorialNonRecursiveTest(int position, int expected)
+        {
+            Assert.Equal(expected, CalcFactorialNonRecursive(position));
         }
 
         public static IEnumerable<object[]> FactorialTestData() {
